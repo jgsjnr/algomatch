@@ -72,6 +72,13 @@ class User{
         std::string getName(){return this->name;};
 };
 
+class Candidates : public User{
+    public:
+    private:
+};
+
+
+
 class Matcher{
     private:
         float digest;
@@ -128,27 +135,20 @@ class Match{
         void testMatch(double aPlayer, double bPlayer){
             double sub = aPlayer - bPlayer;
             std::cout << std::fixed << std::setprecision(10);
-            std::cout << "Valor de SUB: " << sub << std::endl;
+            std::cout << "Valor de SUB: " << sub <<  std::endl;
             if(sub >= 0.05 && sub <= 0.1){
-                for(double i = 0; i< tam; i++){
-                    possibilities.push_front(this->generateRand());
-                };
-                it = possibilities.begin();
-                while((sub >= possibilities.front() && sub <= possibilities.front()) && possibilities.front() != NULL){
-                    std::next(it);
-                }
                 std::cout << "Match!" << std::endl;
             }else{
                 std::cout << "Unmatch!" << std::endl;
-            }
+            };
         };
         double generateRand(){
             srand (time(NULL));
-            double f = (double)rand() / 0.99;
+            double f = (double)rand() / 1;
             return f;
         }
     private:
-        std::list<double> possibilities;
+        std::list<double> candidates;
         std::list<double>::iterator it;
         int tam = 10;
         int match;
